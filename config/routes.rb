@@ -1,8 +1,5 @@
 Hddreport::Application.routes.draw do
-  get "hddbenchmark/upload"
-  get "hddbenchmark/index"
-  get "hddbenchmark/show"
-  get "welcome/index"
+  
   scope ENV['RAILS_RELATIVE_URL_ROOT'] || '/' do 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -10,6 +7,14 @@ Hddreport::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+
+  post "hddbenchmark/upload"
+  #get "hddbenchmark/upload"
+  #get "hddbenchmark/index"
+  get "hddbenchmark/show"
+  get "welcome/index"
+
+  resources :hddbenchmark
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,2 +1,7 @@
 <h1>Hddbenchmark#show</h1>
 <p>Find me in app/views/hddbenchmark/show.html.erb</p>
+<%= @benchmark.name %>
+
+<% @benchmark.measurements.each do |m| %>
+	<%= m.laptime %>
+<% end %>

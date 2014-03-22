@@ -1,2 +1,5 @@
 <h1>Hddbenchmark#index</h1>
 <p>Find me in app/views/hddbenchmark/index.html.erb</p>
+<% @benchmarks.each do |benchmark| %>
+	<%= link_to benchmark.name, benchmark %>
+<% end %>

@@ -11,6 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140322180819) do
+
+  create_table "hddbenchmarks", force: true do |t|
+    t.string   "name"
+    t.integer  "device_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "measurements", force: true do |t|
+    t.integer  "hddbenchmark_id"
+    t.float    "laptime"
+    t.integer  "iteration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

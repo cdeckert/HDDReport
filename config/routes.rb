@@ -1,4 +1,7 @@
 Hddreport::Application.routes.draw do
+  get "hddbenchmark/upload"
+  get "hddbenchmark/index"
+  get "hddbenchmark/show"
   get "welcome/index"
   scope ENV['RAILS_RELATIVE_URL_ROOT'] || '/' do 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>Hddreport</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  
+
   <script src="http://code.highcharts.com/stock/highstock.js"></script>
   <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
   <%= csrf_meta_tags %>
@@ -15,6 +16,9 @@
 
 <!-- Latest compiled and minified JavaScript -->
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </head>
 <body>
 <div class="container">

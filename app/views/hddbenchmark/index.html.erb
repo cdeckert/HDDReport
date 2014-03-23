@@ -1,5 +1,9 @@
-<h1>Hddbenchmark#index</h1>
-<p>Find me in app/views/hddbenchmark/index.html.erb</p>
+<h1>Hddbenchmarks</h1>
+<ul class="list-group">
 <% @benchmarks.each do |benchmark| %>
+	<li class="list-group-item">
 	<%= link_to benchmark.name, benchmark %>
+	<span class="badge"><%=benchmark.measurements.size() %></span>
+	</li>
 <% end %>
+</ul>

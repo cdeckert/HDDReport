@@ -9,11 +9,7 @@ Hddreport::Application.routes.draw do
 
 
   post "hddbenchmark/upload"
-  #get "hddbenchmark/upload"
-  #get "hddbenchmark/index"
-  get "hddbenchmark/show"
-  get "welcome/index"
-
+  get "hddbenchmark/:id/results" => 'hddbenchmark#results'
   resources :hddbenchmark
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

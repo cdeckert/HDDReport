@@ -6,8 +6,8 @@ class HddbenchmarkController < ApplicationController
   	theBenchmark = Hddbenchmark.create(:name => "abc")
 
   	measurements = []
-  	data.each do |d|
-  		measurements << Measurement.new(:laptime => d, :hddbenchmark_id => theBenchmark.id)
+  	data.each_with_index do |d, i|
+  		measurements << Measurement.new(:laptime => d, :hddbenchmark_id => theBenchmark.id, :iteration => i)
   	end
   	Measurement.import measurements
 
@@ -15,6 +15,24 @@ class HddbenchmarkController < ApplicationController
     respond_to do |format|
   	  format.json{ render :json => "hello"}
 	  end
+  end
+
+  def results
+    @benchmark = Hddbenchmark.find(params[:id])
+    if params[:from] == nil
+      data = @benchmark.measurements.reduce(@benchmark.reduction_parameter)
+    else
+      data = @benchmark.measurements.reduce_from_to(params[:from].to_i, params[:to].to_i)
+    end
+    @result = []
+    data.each do |d|
+      @result << [d.iteration, d.laptime]
+    end
+    
+    respond_to do |format|
+      format.html
+      format.json{ render :json => @result}
+    end
   end
 
   def index

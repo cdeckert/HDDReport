@@ -8,10 +8,14 @@ class HddbenchmarkController < ApplicationController
   	measurements = []
   	data.each_with_index do |d, i|
   		measurements << Measurement.new(:laptime => d, :hddbenchmark_id => theBenchmark.id, :iteration => i)
-  	end
-  	Measurement.import measurements
+  	  if measurements.size() > 1000
+        Measurement.import measurements
+        measurements = []
+      end
+    end
+  	
 
-	puts data
+	#puts data
     respond_to do |format|
   	  format.json{ render :json => "hello"}
 	  end

@@ -19,6 +19,10 @@ afterSetExtremes = (e)->
 rawChart = 
 	chart:
 		zoomType: "x"
+	plotOptions:
+		series:
+			marker:
+				enabled: false
 	series:[
 		name: "data"
 		data: []

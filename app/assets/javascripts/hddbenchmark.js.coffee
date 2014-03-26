@@ -34,5 +34,9 @@ drawchart = ->
 		rawChart.series[0].data = data
 		$("#container").highcharts(rawChart)
 
-$(document).ready ->
+
+ready = ->
 	drawchart() if $("#container").length > 0
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

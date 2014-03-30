@@ -2,8 +2,7 @@ class HddbenchmarkController < ApplicationController
   skip_before_filter :verify_authenticity_token
   def upload
   	data = params[:data]
-
-  	theBenchmark = Hddbenchmark.create(:name => "abc")
+  	theBenchmark = Hddbenchmark.create(:name => params[:testName])
 
   	measurements = []
   	data.each_with_index do |d, i|

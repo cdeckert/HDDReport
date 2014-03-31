@@ -2,7 +2,7 @@
 <ul class="list-group">
 <% @benchmarks.each do |benchmark| %>
 	<li class="list-group-item">
-	<%= link_to benchmark.name, benchmark %>
+	<h3><%= link_to benchmark.name, benchmark %></h3> <%= benchmark.created_at%>
 	<span class="badge"><%=benchmark.measurements.size() %></span>
 	</li>
 <% end %>

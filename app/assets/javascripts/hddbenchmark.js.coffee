@@ -5,6 +5,8 @@
 resultURL = ->
 	document.location.href+'/results'
 
+maxresultURL = ->
+	document.location.href+'/max_results'
 
 afterSetExtremes = (e)->
 	url = resultURL()
@@ -13,7 +15,7 @@ afterSetExtremes = (e)->
 	chart.showLoading('Loading data from server...');
 
 	$.getJSON url, (data)->
-		chart.series[0].setData data
+		chart.series[1].setData data
 		chart.hideLoading()
 
 rawChart = 
@@ -24,8 +26,16 @@ rawChart =
 			marker:
 				enabled: false
 	series:[
+		{
+		name: "max"
+		data: []
+		type: 'area'
+		}
+		{
 		name: "data"
 		data: []
+		}
+
 	]
 	xAxis:
 		events:
@@ -35,6 +45,9 @@ rawChart =
 drawchart = ->
 	#get result
 	$.getJSON resultURL(), (data)->
+		rawChart.series[1].data = data
+		$("#container").highcharts(rawChart)
+	$.getJSON maxresultURL(), (data)->
 		rawChart.series[0].data = data
 		$("#container").highcharts(rawChart)
 

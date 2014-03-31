@@ -38,6 +38,22 @@ class HddbenchmarkController < ApplicationController
     end
   end
 
+  def max_results
+    @benchmark = Hddbenchmark.find(params[:id])
+
+    data = @benchmark.measurements.max(params[:id]) 
+    @result = []
+    data.each do |d|
+      @result << [d.iteration, d.laptime]
+    end
+    
+    respond_to do |format|
+      format.html
+      format.json{ render :json => @result}
+    end
+    
+  end
+
   def index
   	
   	@benchmarks = Hddbenchmark.all

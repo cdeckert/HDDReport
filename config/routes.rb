@@ -10,6 +10,7 @@ Hddreport::Application.routes.draw do
 
   post "hddbenchmark/upload"
   get "hddbenchmark/:id/results" => 'hddbenchmark#results'
+  get "hddbenchmark/:id/max_results" => 'hddbenchmark#max_results'
   resources :hddbenchmark
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

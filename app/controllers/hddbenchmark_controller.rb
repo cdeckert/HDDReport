@@ -23,9 +23,9 @@ class HddbenchmarkController < ApplicationController
   def results
     @benchmark = Hddbenchmark.find(params[:id])
     if params[:from] == nil
-      data = @benchmark.measurements.reduce(@benchmark.reduction_parameter)
+      data = @benchmark.measurements.exclude_max_mins.reduce(@benchmark.reduction_parameter)
     else
-      data = @benchmark.measurements.reduce_from_to(params[:from].to_i, params[:to].to_i)
+      data = @benchmark.measurements.exclude_max_mins.reduce_from_to(params[:from].to_i, params[:to].to_i)
     end
     @result = []
     data.each do |d|

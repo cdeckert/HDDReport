@@ -47,9 +47,6 @@ drawchart = ->
 	$.getJSON resultURL(), (data)->
 		rawChart.series[1].data = data
 		$("#container").highcharts(rawChart)
-	$.getJSON maxresultURL(), (data)->
-		rawChart.series[0].data = data
-		$("#container").highcharts(rawChart)
 
 
 ready = ->

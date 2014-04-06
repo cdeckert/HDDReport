@@ -5,8 +5,10 @@
 resultURL = ->
 	document.location.href+'/results'
 
-maxresultURL = ->
-	document.location.href+'/max_results'
+minURL = ->
+	document.location.href+'/min'
+avgURL = ->
+	document.location.href+'/avg'
 
 afterSetExtremes = (e)->
 	url = resultURL()
@@ -15,24 +17,28 @@ afterSetExtremes = (e)->
 	chart.showLoading('Loading data from server...');
 
 	$.getJSON url, (data)->
-		chart.series[1].setData data
+		chart.series[0].setData data
 		chart.hideLoading()
 
 rawChart = 
 	chart:
 		zoomType: "x"
+		renderTo: "container"
 	plotOptions:
 		series:
 			marker:
 				enabled: false
 	series:[
 		{
-		name: "max"
+		name: "data"
 		data: []
-		type: 'area'
 		}
 		{
-		name: "data"
+		name: "min"
+		data: []
+		}
+		{
+		name: "avg"
 		data: []
 		}
 
@@ -43,10 +49,18 @@ rawChart =
 
 
 drawchart = ->
-	#get result
+	
 	$.getJSON resultURL(), (data)->
-		rawChart.series[1].data = data
-		$("#container").highcharts(rawChart)
+		rawChart.series[0].data = data
+		theChart = new Highcharts.Chart rawChart
+		console.log theChart
+
+
+		$.getJSON minURL(), (data) ->
+			theChart.series[1].setData data
+
+		$.getJSON avgURL(), (data) ->
+			theChart.series[2].setData data
 
 
 ready = ->

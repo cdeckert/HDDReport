@@ -6,4 +6,8 @@ class Measurement < ActiveRecord::Base
 
 	scope :from_to, lambda{ |from, to| where("iteration >= ? AND iteration <= ?", from, to).select("iteration, laptime, id") }
 	scope :exclude_max_mins, lambda {joins(:hddbenchmark).where("laptime >= hddbenchmarks.min_measured_value AND laptime <= hddbenchmarks.max_measured_value")}
+
+	scope :avg, lambda { |range| group(" cast(iteration / 1000 as int)").select("avg(laptime) as laptime, iteration") }
+	scope :min, lambda { |range| group(" cast(iteration / 1000 as int)").select("min(laptime) as laptime, iteration") }
+
 end

@@ -23,7 +23,7 @@ class HddbenchmarkController < ApplicationController
   def results
     @benchmark = Hddbenchmark.find(params[:id])
     if params[:from] == nil
-      data = @benchmark.measurements.exclude_max_mins.reduce(@benchmark.reduction_parameter)
+      data = @benchmark.reduced_measurements
     else
       data = @benchmark.measurements.exclude_max_mins.reduce_from_to(params[:from].to_i, params[:to].to_i)
     end
@@ -38,21 +38,37 @@ class HddbenchmarkController < ApplicationController
     end
   end
 
-  def max_results
+  def min
     @benchmark = Hddbenchmark.find(params[:id])
-
-    data = @benchmark.measurements.max(params[:id]) 
+    data = @benchmark.mins
+    
     @result = []
     data.each do |d|
       @result << [d.iteration, d.laptime]
     end
-    
+
     respond_to do |format|
       format.html
       format.json{ render :json => @result}
     end
-    
   end
+
+  def avg
+    @benchmark = Hddbenchmark.find(params[:id])
+    data = @benchmark.avg
+    
+    @result = []
+    data.each do |d|
+      @result << [d.iteration, d.laptime]
+    end
+
+    respond_to do |format|
+      format.html
+      format.json{ render :json => @result}
+    end
+  end
+
+  
 
   def index
   	

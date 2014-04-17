@@ -1,4 +1,5 @@
 class HddbenchmarkController < ApplicationController
+  before_action :set_hddbenchmark, only: [:show, :edit, :update, :destroy, :avg, :results, :min]
   skip_before_filter :verify_authenticity_token
   def upload
   	data = params[:data]
@@ -39,7 +40,6 @@ class HddbenchmarkController < ApplicationController
   end
 
   def min
-    @benchmark = Hddbenchmark.find(params[:id])
     data = @benchmark.mins
     
     @result = []
@@ -54,7 +54,6 @@ class HddbenchmarkController < ApplicationController
   end
 
   def avg
-    @benchmark = Hddbenchmark.find(params[:id])
     data = @benchmark.avg
     
     @result = []
@@ -68,6 +67,22 @@ class HddbenchmarkController < ApplicationController
     end
   end
 
+
+  # PATCH/PUT /hddbenchmarks/1
+  # PATCH/PUT /hddbenchmarks/1.json
+  def update
+    respond_to do |format|
+      puts hddbenchmark_params
+      if @benchmark.update(hddbenchmark_params)
+        format.html { redirect_to @benchmark, notice: 'Hddbenchmark was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @benchmark.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   
 
   def index
@@ -76,6 +91,16 @@ class HddbenchmarkController < ApplicationController
   end
 
   def show
-  	@benchmark = Hddbenchmark.find(params[:id])
+  	#@benchmark = Hddbenchmark.find(params[:id])
   end
+
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_hddbenchmark
+      @benchmark = Hddbenchmark.find(params[:id])
+    end
+    def hddbenchmark_params
+      params.require(:hddbenchmark).permit(:name, :max_measured_value, :min_measured_value)
+    end
 end

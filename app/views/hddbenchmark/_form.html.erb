@@ -1,0 +1,19 @@
+<%= form_for(@benchmark) do |f| %>
+
+  
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :max_measured_value %><br>
+    <%= f.text_field :max_measured_value, :class => "form-control" %>
+  </div>
+    <div class="form-group">
+    <%= f.label :min_measured_value %><br>
+    <%= f.text_field :min_measured_value, :class => "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>

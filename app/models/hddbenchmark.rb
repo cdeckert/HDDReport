@@ -1,5 +1,6 @@
 class Hddbenchmark < ActiveRecord::Base
 	has_many :measurements
+	belongs_to :device
 	def iterations
 		self.measurements.size()
 	end

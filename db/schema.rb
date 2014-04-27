@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331145221) do
+ActiveRecord::Schema.define(version: 20140427165600) do
+
+  create_table "devices", force: true do |t|
+    t.string   "name"
+    t.string   "computer"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "hddbenchmarks", force: true do |t|
     t.string   "name"

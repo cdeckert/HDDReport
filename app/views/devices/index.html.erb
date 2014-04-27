@@ -1,0 +1,36 @@
+<h1>Listing devices</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Name</th>
+      <th>Computer</th>
+      <th>Address</th>
+      
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @devices.each do |device| %>
+      <tr>
+        <td>
+          <div class="btn-group btn-group-xs">
+            <%= link_to 'Show', device, :class => "btn btn-default" %>
+            <%= link_to 'Edit', edit_device_path(device), :class => "btn btn-default" %>
+            <%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default" %>
+          </div>
+        </td>
+        <td><%= link_to device.name, device %></td>
+        <td><%= device.computer %></td>
+        <td><%= device.address %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Device', new_device_path, :class => "btn btn-primary btn-lg" %>

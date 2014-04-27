@@ -1,12 +1,14 @@
 Hddreport::Application.routes.draw do
   
+  
+
   scope ENV['RAILS_RELATIVE_URL_ROOT'] || '/' do 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-
+  resources :devices
 
   post "hddbenchmark/upload"
   get "hddbenchmark/:id/results" => 'hddbenchmark#results'

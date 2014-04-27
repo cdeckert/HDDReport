@@ -1,4 +1,70 @@
-<h1><%= @benchmark.name %></h1><%= link_to 'Edit', edit_hddbenchmark_path(@benchmark), :class => "btn btn-default" %>
+<div class="page-header">
+<h1><%= @benchmark.name %></h1>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Meta Data</div>
+			<div class="panel-body">
+				<dl class="dl-horizontal">
+				  <dt>hd_geometry_heads</dt>
+				  <dd><%= @benchmark.hd_geometry_heads %></dd>
 
-<div id="container" style="height:400px"></div>
+				  <dt>hd_geometry_sectors</dt>
+				  <dd><%= @benchmark.hd_geometry_sectors %></dd>
 
+				  <dt>hd_geometry_start</dt>
+				  <dd><%= @benchmark.hd_geometry_start %></dd>
+
+				  <dt>hd_geometry_cylinders</dt>
+				  <dd><%= @benchmark.hd_geometry_cylinders %></dd>
+
+				  <dt>HDIO_GET_UNMASKINTR</dt>
+				  <dd><%= @benchmark.HDIO_GET_UNMASKINTR %></dd>
+
+				  <dt>HDIO_GET_MULTCOUNT</dt>
+				  <dd><%= @benchmark.HDIO_GET_MULTCOUNT %></dd>
+
+				  <dt>HDIO_GET_KEEPSETTINGS</dt>
+				  <dd><%= @benchmark.HDIO_GET_KEEPSETTINGS %></dd>
+
+				  <dt>HDIO_GET_32BIT</dt>
+				  <dd><%= @benchmark.HDIO_GET_32BIT %></dd>
+
+				  <dt>HDIO_GET_NOWERR</dt>
+				  <dd><%= @benchmark.HDIO_GET_NOWERR %></dd>
+
+				  <dt>HDIO_GET_DMA</dt>
+				  <dd><%= @benchmark.HDIO_GET_DMA %></dd>
+
+				  <dt>HDIO_GET_NICE</dt>
+				  <dd><%= @benchmark.HDIO_GET_NICE %></dd>
+
+				  <dt>HDIO_GET_WCACHE</dt>
+				  <dd><%= @benchmark.HDIO_GET_WCACHE %></dd>
+
+				  <dt>HDIO_GET_ACOUSTIC</dt>
+				  <dd><%= @benchmark.HDIO_GET_ACOUSTIC %></dd>
+
+				  <dt>HDIO_GET_ADDRESS</dt>
+				  <dd><%= @benchmark.HDIO_GET_ADDRESS %></dd>
+
+				  <dt>HDIO_GET_BUSSTATE</dt>
+				  <dd><%= @benchmark.HDIO_GET_BUSSTATE %></dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div id="container" style="height:400px"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<%= link_to 'Edit', edit_hddbenchmark_path(@benchmark), :class => "btn btn-default" %>

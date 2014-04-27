@@ -1,19 +1,41 @@
 <p id="notice"><%= notice %></p>
+<h1><%= @device.name %></h1>
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">Meta Data</div>
+			<div class="panel-body">
+				<p>
+				  <strong>Computer:</strong>
+				  <%= @device.computer %>
+				</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @device.name %>
-</p>
+				<p>
+				  <strong>Address:</strong>
+				  <%= @device.address %>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">Benchmarks</div>
+			<div class="panel-body">
+				<ul class="list-group">
+					<% @device.hddbenchmarks.each do |benchmark| %>
+					<li class="list-group-item">
+						<h3><%= link_to benchmark.name, benchmark %></h3>
+						<%= benchmark.created_at%>
+						<span class="badge"><%=benchmark.measurements.size() %></span>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
 
-<p>
-  <strong>Computer:</strong>
-  <%= @device.computer %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @device.address %>
-</p>
 
 <%= link_to 'Edit', edit_device_path(@device) %> |
 <%= link_to 'Back', devices_path %>

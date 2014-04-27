@@ -101,6 +101,6 @@ class HddbenchmarkController < ApplicationController
       @benchmark = Hddbenchmark.find(params[:id])
     end
     def hddbenchmark_params
-      params.require(:hddbenchmark).permit(:name, :max_measured_value, :min_measured_value)
+      params.require(:hddbenchmark).permit(:name, :max_measured_value, :min_measured_value, :device_id)
     end
 end

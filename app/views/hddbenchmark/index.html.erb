@@ -3,6 +3,7 @@
 <% @benchmarks.each do |benchmark| %>
 	<li class="list-group-item">
 	<h3><%= link_to benchmark.name, benchmark %></h3> <%= benchmark.created_at%>
+	<span class="badge"><%=benchmark.device.name %></span>
 	</li>
 <% end %>
 </ul>

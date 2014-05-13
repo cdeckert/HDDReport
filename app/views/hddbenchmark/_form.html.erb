@@ -6,17 +6,25 @@
     <%= f.text_field :name, :class => "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :max_measured_value %><br>
-    <%= f.text_field :max_measured_value, :class => "form-control" %>
-  </div>
-    <div class="form-group">
     <%= f.label :min_measured_value %><br>
     <%= f.text_field :min_measured_value, :class => "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :max_measured_value %><br>
+    <%= f.text_field :max_measured_value, :class => "form-control" %>
+  </div>
+    
+  <div class="form-group">
     <%= f.label :device_id %><br>
     <%= f.collection_select(:device_id , Device.all, :id, :name, {}, {:class=> "form-control"})  %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :zone_var %><br>
+    <%= f.text_field :zone_var, :class => "form-control" %>
+  </div>
+
+  
   <div class="actions">
     <%= f.submit :class => "btn btn-primary" %>
   </div>

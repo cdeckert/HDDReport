@@ -1,5 +1,5 @@
 class HddbenchmarkController < ApplicationController
-  before_action :set_hddbenchmark, only: [:show, :edit, :update, :destroy, :avg, :results, :min]
+  before_action :set_hddbenchmark, only: [:show, :edit, :update, :destroy, :avg, :results, :min, :jumps]
   skip_before_filter :verify_authenticity_token
   def upload
   	data = params[:data]
@@ -87,6 +87,28 @@ class HddbenchmarkController < ApplicationController
   end
 
 
+  def jumps
+    data = @benchmark.avg
+    oldvalue = 0
+    oldvalue2 = 0
+    @result = []
+
+    data.each do |d|
+      oldvalue2 = oldvalue
+      oldvalue = d.laptime
+      if (oldvalue2 - d.laptime).abs > @benchmark.zone_var
+        @result << [d.iteration, d.laptime]
+      end
+    end
+
+
+    respond_to do |format|
+      format.html
+      format.json{ render :json => @result}
+    end
+  end
+
+
   # PATCH/PUT /hddbenchmarks/1
   # PATCH/PUT /hddbenchmarks/1.json
   def update
@@ -120,6 +142,6 @@ class HddbenchmarkController < ApplicationController
       @benchmark = Hddbenchmark.find(params[:id])
     end
     def hddbenchmark_params
-      params.require(:hddbenchmark).permit(:name, :max_measured_value, :min_measured_value, :device_id)
+      params.require(:hddbenchmark).permit(:name, :max_measured_value, :min_measured_value, :device_id, :zone_var)
     end
 end

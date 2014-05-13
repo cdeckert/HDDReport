@@ -14,6 +14,7 @@ Hddreport::Application.routes.draw do
   get "hddbenchmark/:id/results" => 'hddbenchmark#results'
   get "hddbenchmark/:id/min" => 'hddbenchmark#min'
   get "hddbenchmark/:id/avg" => 'hddbenchmark#avg'
+  get "hddbenchmark/:id/jumps" => 'hddbenchmark#jumps'
   resources :hddbenchmark
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

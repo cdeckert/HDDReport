@@ -10,6 +10,9 @@ minURL = ->
 avgURL = ->
 	document.location.href+'/avg'
 
+jumpsURL = ->
+	document.location.href+'/jumps'
+
 afterSetExtremes = (e)->
 	url = resultURL()
 	url+="?from="+e.min+"&to="+e.max
@@ -41,6 +44,14 @@ rawChart =
 		name: "avg"
 		data: []
 		}
+		{
+		name: "jumps"
+		data: []
+		lineWidth: 0
+		marker:
+			enabled: true
+			radius: 4
+		}
 
 	]
 	xAxis:
@@ -61,6 +72,9 @@ drawchart = ->
 
 		$.getJSON avgURL(), (data) ->
 			theChart.series[2].setData data
+
+		$.getJSON jumpsURL(), (data) ->
+			theChart.series[3].setData data
 
 
 ready = ->

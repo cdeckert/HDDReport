@@ -27,6 +27,8 @@ rawChart =
 	chart:
 		zoomType: "x"
 		renderTo: "container"
+	title:
+		text: ""
 	plotOptions:
 		series:
 			marker:

@@ -21,7 +21,8 @@ class HddbenchmarkController < ApplicationController
       :HDIO_GET_WCACHE => params[:properties]["HDIO_GET_WCACHE"],
       :HDIO_GET_ACOUSTIC => params[:properties]["HDIO_GET_ACOUSTIC"],
       :HDIO_GET_ADDRESS => params[:properties]["HDIO_GET_ADDRESS"],
-      :HDIO_GET_BUSSTATE => params[:properties]["HDIO_GET_BUSSTATE"]
+      :HDIO_GET_BUSSTATE => params[:properties]["HDIO_GET_BUSSTATE"],
+      :properties => params[:modePages].to_json
     )
 
   	measurements = []
@@ -133,6 +134,12 @@ class HddbenchmarkController < ApplicationController
 
   def show
   	#@benchmark = Hddbenchmark.find(params[:id])
+    begin
+      @properties = JSON.parse(@benchmark.properties)
+      @properties = @properties.enum_for(:each_slice, 20).to_a
+    rescue
+      @properties = nil
+    end
   end
 
 

@@ -53,6 +53,31 @@
 				  <dd><%= @benchmark.HDIO_GET_BUSSTATE %></dd>
 				</dl>
 			</div>
+			</div>
+			<div class="panel panel-default">
+			<div class="panel-heading">Meta Data 2</div>
+			<div class="panel-body">
+				<div class="row">
+					<% if !@properties.blank? %>
+					  <% for itemSplits in @properties %>
+					  	<div class="col-md-6">
+					  		<dl class="dl-horizontal">
+					  		<% if !itemSplits.blank? %>
+					  		  <% for item in itemSplits %>
+					  		    <dt><%= item.first %></dt>
+					  		    <dd><%= item.second %></dd>
+					  		  <% end %>
+					  		<% else %>
+					  		  
+					  		<% end %>
+					  		</dl>
+					  	</div>  
+					  <% end %>
+					<% else %>
+					  
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
 

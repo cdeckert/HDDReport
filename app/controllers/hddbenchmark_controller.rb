@@ -5,10 +5,10 @@ class HddbenchmarkController < ApplicationController
   	data = params[:data]
   	theBenchmark = Hddbenchmark.create(
       :name => params[:testName],
-      :hd_geometry_heads => params[:properties]["hd_geometry.heads"],
-      :hd_geometry_sectors => params[:properties]["hd_geometry.sectors"],
-      :hd_geometry_start => params[:properties]["hd_geometry.start"],
-      :hd_geometry_cylinders => params[:properties]["hd_geometry.cylinders"],
+      ##:hd_geometry_heads => params[:properties]["hd_geometry.heads"],
+      #:hd_geometry_sectors => params[:properties]["hd_geometry.sectors"],
+      #:hd_geometry_start => params[:properties]["hd_geometry.start"],
+      #:hd_geometry_cylinders => params[:properties]["hd_geometry.cylinders"],
 
 
       :HDIO_GET_UNMASKINTR => params[:properties]["HDIO_GET_UNMASKINTR"],

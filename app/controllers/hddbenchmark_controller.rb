@@ -5,23 +5,23 @@ class HddbenchmarkController < ApplicationController
   	data = params[:data]
   	theBenchmark = Hddbenchmark.create(
       :name => params[:testName],
-      ##:hd_geometry_heads => params[:properties]["hd_geometry.heads"],
-      #:hd_geometry_sectors => params[:properties]["hd_geometry.sectors"],
-      #:hd_geometry_start => params[:properties]["hd_geometry.start"],
-      #:hd_geometry_cylinders => params[:properties]["hd_geometry.cylinders"],
+      :hd_geometry_heads => params[:properties]["hd_geometry.heads"],
+      :hd_geometry_sectors => params[:properties]["hd_geometry.sectors"],
+      :hd_geometry_start => params[:properties]["hd_geometry.start"],
+      :hd_geometry_cylinders => params[:properties]["hd_geometry.cylinders"],
 
 
-      #:HDIO_GET_UNMASKINTR => params[:properties]["HDIO_GET_UNMASKINTR"],
-      #:HDIO_GET_MULTCOUNT => params[:properties]["HDIO_GET_MULTCOUNT"],
-      #:HDIO_GET_KEEPSETTINGS => params[:properties]["HDIO_GET_KEEPSETTINGS"],
-      #:HDIO_GET_32BIT => params[:properties]["HDIO_GET_32BIT"],
-      #:HDIO_GET_NOWERR => params[:properties]["HDIO_GET_NOWERR"],
-      #:HDIO_GET_DMA => params[:properties]["HDIO_GET_DMA"],
-      #:HDIO_GET_NICE => params[:properties]["HDIO_GET_NICE"],
-      #:HDIO_GET_WCACHE => params[:properties]["HDIO_GET_WCACHE"],
-      #:HDIO_GET_ACOUSTIC => params[:properties]["HDIO_GET_ACOUSTIC"],
-      #:HDIO_GET_ADDRESS => params[:properties]["HDIO_GET_ADDRESS"],
-      #:HDIO_GET_BUSSTATE => params[:properties]["HDIO_GET_BUSSTATE"],
+      :HDIO_GET_UNMASKINTR => params[:properties]["HDIO_GET_UNMASKINTR"],
+      :HDIO_GET_MULTCOUNT => params[:properties]["HDIO_GET_MULTCOUNT"],
+      :HDIO_GET_KEEPSETTINGS => params[:properties]["HDIO_GET_KEEPSETTINGS"],
+      :HDIO_GET_32BIT => params[:properties]["HDIO_GET_32BIT"],
+      :HDIO_GET_NOWERR => params[:properties]["HDIO_GET_NOWERR"],
+      :HDIO_GET_DMA => params[:properties]["HDIO_GET_DMA"],
+      :HDIO_GET_NICE => params[:properties]["HDIO_GET_NICE"],
+      :HDIO_GET_WCACHE => params[:properties]["HDIO_GET_WCACHE"],
+      :HDIO_GET_ACOUSTIC => params[:properties]["HDIO_GET_ACOUSTIC"],
+      :HDIO_GET_ADDRESS => params[:properties]["HDIO_GET_ADDRESS"],
+      :HDIO_GET_BUSSTATE => params[:properties]["HDIO_GET_BUSSTATE"],
       :properties => params[:modePages].to_json
     )
 
